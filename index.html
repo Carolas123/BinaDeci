@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=10.0">
+    <title>Calculadora Decimal-Binario</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6e1f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+        }
+        .card-header {
+            background-color: #6a5acd;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #6a5acd;
+            border-color: #6a5acd;
+        }
+        .btn-primary:hover {
+            background-color: #4e3d95;
+            border-color: #4e3d95;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #4e3d95;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+        }
+        .result-field {
+            background-color: #f0e6ff;
+            color: #4e3d95;
+            font-weight: bold;
+            border: 1px solid #6a5acd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header">Conversor Decimal-Binario</div>
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <label for="inputNumber" class="form-label">Ingresa un número:</label>
+                    <input type="text" id="inputNumber" class="form-control" placeholder="Ej: 10 o 1010">
+                </div>
+                <div class="mb-3">
+                    <label for="conversionType" class="form-label">Tipo de conversión:</label>
+                    <select id="conversionType" class="form-select">
+                        <option value="decimalToBinary">Decimal a Binario</option>
+                        <option value="binaryToDecimal">Binario a Decimal</option>
+                    </select>
+                </div>
+                <button id="convertButton" class="btn btn-primary w-100">Convertir</button>
+                <div class="mt-4">
+                    <label class="form-label">Resultado:</label>
+                    <input type="text" id="result" class="form-control result-field" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const inputNumber = document.getElementById('inputNumber').value;
+            const conversionType = document.getElementById('conversionType').value;
+            const resultField = document.getElementById('result');
+            
+            if (conversionType === 'decimalToBinary') {
+                // Convertir de decimal a binario
+                resultField.value = parseInt(inputNumber, 10).toString(2);
+            } else if (conversionType === 'binaryToDecimal') {
+                // Convertir de binario a decimal
+                resultField.value = parseInt(inputNumber, 2).toString(10);
+            }
+        });
+    </script>
+</body>
+</html>
